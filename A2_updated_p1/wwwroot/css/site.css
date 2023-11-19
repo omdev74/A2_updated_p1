@@ -1,0 +1,72 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    
+    width: 80%;
+    margin: 0 auto; /* Center the entire page */
+    
+}
+
+
+.custom-jumbotron {
+    background-color: #17a2b8;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.custom-footer{
+    position:static !important;
+}
+
+.faqs {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+    .faqs h5 {
+        color: #007bff;
+    }
+
+    .faqs p {
+        color: #6c757d;
+    }
+
+    .faqs a {
+        margin-top: 10px;
+        display: inline-block;
+        text-decoration: none;
+        color: #28a745;
+        padding: 5px 10px;
+        border: 1px solid #28a745;
+        border-radius: 3px;
+        transition: background-color 0.3s ease;
+    }
+
+        .faqs a:hover {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+
+.faqSection{margin-top:2vh;}

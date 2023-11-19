@@ -1,0 +1,66 @@
+﻿@{
+    var categories = ViewBag.Categories as List<Category>;
+    var faqs = ViewBag.FAQs as List<FAQ>;
+    var topics = ViewBag.Topics as List<Topic>;
+    var selectedCategory = ViewBag.SelectedCategory as string;
+    var selectedTopic = ViewBag.SelectedTopic as string;
+}
+
+<div class="row">
+    <!--  Bootstrap List Group for Categories -->
+    <div class="col-md-3">
+        <div class="list-group">
+            @foreach (var category in categories)
+            {
+                <a href="@Url.Action("FilterByCategory", new { categoryId = category.CategoryId })" class="list-group-item list-group-item-action">@category.Name</a>
+            }
+        </div>
+    </div>
+
+    <!-- FAQs Section -->
+    <div class="col-md-9">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                
+
+                <!-- Navbar items -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                       
+                        <!-- All FAQs link -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index")">All FAQs</a>
+                        </li>
+                        <!-- Topics dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Topics
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach (var topic in topics)
+                                {
+                                    <li><a class="dropdown-item" href="@Url.Action("FilterByTopic", new { topicId = topic.TopicId })">@topic.Name</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- FAQs logic -->
+        <ul class="list-group faqSection">
+            <h4>@selectedCategory.ToUpper() : @selectedTopic.ToUpper()</h4>
+            @foreach (var faq in faqs)
+            {
+                <li class="list-group-item faqs">
+                    <h5>@faq.Question</h5>
+                    <p>@faq.Answer</p>
+                    <a href="@Url.Action("FilterByCategory", new { categoryId = faq.Topic.Category.CategoryId })">Category: @faq.Topic.Category.Name</a>
+                    <a href="@Url.Action("FilterByTopic", new { topicId = faq.Topic.TopicId })">Topic: @faq.Topic.Name</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
